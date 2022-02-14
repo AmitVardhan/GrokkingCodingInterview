@@ -1,24 +1,26 @@
-In problems where we deal  with sorted arrays (or LinkedLists) and need to find a set of elements  that fulfill certain constraints, the Two Pointers approach becomes  quite useful. 
-The set of elements could be a pair, a triplet or even a  subarray. 
+![Two Pointers](https://github.com/AmitVardhan/GrokkingCodingInterview/blob/main/resources/img/twoPointersHeader.jpg)
+
+### Usage
+1. Sorted arrays/LinkedLists where we need to find a set of elements that fulfill certain constraints. The set of elements could be a pair, a triplet or even a  subarray. 
 
 
 
+### Problem: Pair with Target Sum
 
-Pair with Target Sum (easy)
+[Pair with Target Sum (easy)](https://leetcode.com/problems/two-sum/)
 
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
-Problem Statement
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.
-Write a function to return the indices of the two numbers (i.e. the pair) such that they add up to the given target.
 Example 1:
-```
+```javascript
 Input: [1, 2, 3, 4, 6], target=6
 Output: [1, 3]
 Explanation: The numbers at index 1 and 3 add up to 6: 2+4=6
 ```
 Example 2:
-```
+```javascript
 Input: [2, 5, 9, 11], target=11
 Output: [0, 2]
 Explanation: The numbers at index 0 and 2 add up to 11: 2+9=11
@@ -26,7 +28,6 @@ Explanation: The numbers at index 0 and 2 add up to 11: 2+9=11
 
 
 Solution
-
 Since the given array is  sorted, a brute-force solution could be to iterate through the array,  taking one number at a time and searching for the second number through Binary Search. The time complexity of this algorithm will be O(N ∗ logN). Can we do better than this?
 
 We can follow the Two Pointers  approach. We will start with one pointer pointing to the beginning of  the array and another pointing at the end. At every step, we will see if  the numbers pointed by the two pointers add up to the target sum. If  they do, we have found our pair; otherwise, we will do one of two  things:
@@ -36,7 +37,7 @@ We can follow the Two Pointers  approach. We will start with one pointer pointin
 Here is the visual representation of this algorithm for Example-1:
 
 
-```
+```javascript
 function pair_with_target_sum(arr, targetSum) {
   let left = 0,
     right = arr.length - 1;
@@ -59,19 +60,16 @@ console.log(pair_with_target_sum([2, 5, 9, 11], 11));
 
 
 Time Complexity : O(N)
-
-
 Space Complexity:  O(1).
 
 
 
 An Alternate approach
-
 Instead of using a two-pointer or a binary search approach, we can utilize a HashTable  to search for the required pair. We can iterate through the array one  number at a time. Let’s say during our iteration we are at number ‘X’,  so we need to find ‘Y’ such that "X+Y==Target". We will do two things here:
 1. Search for ‘Y’ (which is equivalent to Target−X) in the HashTable. If it is there, we have found the required pair.
 2. Otherwise, insert “X” in the HashTable, so that we can search it for the later numbers.
 Here is what our algorithm will look like:
-```
+```javascript
 function pair_with_target_sum(arr, targetSum) {
   const nums = {}; // to store numbers and their indices
   for (let i = 0; i < arr.length; i++) {
@@ -87,42 +85,37 @@ console.log(pair_with_target_sum([1, 2, 3, 4, 6], 6));
 console.log(pair_with_target_sum([2, 5, 9, 11], 11));
 ```
 
-Time Complexity 
-
+Time Complexity : O(n)
 The time complexity of the above algorithm will be O(N), where ‘N’ is the total number of elements in the given array.
 
-Space Complexity 
-
+Space Complexity : O(n)
 The space complexity will also be O(N), as, in the worst case, we will be pushing ‘N’ numbers in the HashTable.
 
 
 
 Remove Duplicates (easy)
-
-
 Problem Statement 
 
 Given an array of sorted numbers, remove all duplicates from it. You should not use any extra space; after removing the duplicates in-place return the length of the subarray that has no duplicate in it.
 Example 1:
-```
+```javascript
 Input: [2, 3, 3, 3, 6, 9, 9]
 Output: 4
 Explanation: The first four elements after removing the duplicates will be [2, 3, 6, 9].
 ```
 Example 2:
-```
+```javascript
 Input: [2, 2, 2, 11]
 Output: 2
 Explanation: The first two elements after removing the duplicates will be [2, 11].
 ```
 
 Solution 
-
 In this problem, we need  to remove the duplicates in-place such that the resultant length of the  array remains sorted. As the input array is sorted, therefore, one way  to do this is to shift the elements left whenever we encounter  duplicates. In other words, we will keep one pointer for iterating the  array and one pointer for placing the next non-duplicate number. So our  algorithm will be to iterate the array and whenever we see a  non-duplicate number we move it next to the last non-duplicate number  we’ve seen.
 Here is the visual representation of this algorithm for Example-1:
 
 
-```
+```javascript
 function remove_duplicates(arr) {
   // index of the next non-duplicate element
   let nextNonDuplicate = 1;
@@ -141,13 +134,8 @@ console.log(remove_duplicates([2, 2, 2, 11]));
 ```
 
 Time Complexity : O(1)
-
-
 Space Complexity: O(1)
 
-
-
-Similar Questions 
 
 Problem 1:  Given an unsorted array of numbers and a target ‘key’, remove all  instances of ‘key’ in-place and return the new length of the array.
 Example 1:
@@ -211,7 +199,7 @@ An easier approach could be to first find the index of the first non-negative nu
 Since the numbers at both ends can give us the largest square, an alternate approach could be to use two pointers starting at both ends of the input array. At any step, whichever pointer gives us the bigger square, we add it to the result array and move to the next/previous number according to the pointer. For the above-mentioned Example-1, we will do something like this:
 
 
-```
+```javascript
 function make_squares(arr) {
   const n = arr.length;
   squares = Array(n).fill(0);
@@ -252,14 +240,13 @@ Problem Statement
 
 Given an array of unsorted numbers, find all unique triplets in it that add up to zero.
 Example 1:
-```
+```javascript
 Input: [-3, 0, 1, 2, -1, 1, -2]
 Output: [-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]
 Explanation: There are four unique triplets whose sum is equal to zero.
-
 ```
 Example 2:
-```
+```javascript
 Input: [-5, 2, -1, -2, 3]
 Output: [[-5, 2, 3], [-2, -1, 3]]
 Explanation: There are two unique triplets whose sum is equal to zero.
@@ -267,12 +254,11 @@ Explanation: There are two unique triplets whose sum is equal to zero.
 
 
 Solution 
-
 This problem follows the Two Pointers pattern and shares similarities with Pair with Target Sum.  A couple of differences are that the input array is not sorted and  instead of a pair we need to find triplets with a target sum of zero.
 To follow a similar  approach, first, we will sort the array and then iterate through it  taking one number at a time.  Let’s say during our iteration we are at  number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X+Y+Z==0. At this stage, our problem translates into finding a pair whose sum is equal to “−X” (as from the above equation Y+Z==−X).
 Another difference from Pair with Target Sum  is that we need to find all the unique triplets. To handle this, we  have to skip any duplicate number. Since we will be sorting the array,  so all the duplicate numbers will be next to each other and are easier  to skip.
 
-```
+```javascript
 function search_triplets(arr) {
   arr.sort((a, b) => a - b);
   const triplets = [];
@@ -326,21 +312,20 @@ Problem Statement
 
 Given an array of unsorted numbers and a target number, find a triplet in the array whose sum is as close to the target number as possible, return the sum of the triplet. If there are more than one such triplet, return the sum of the triplet with the smallest sum.
 Example 1:
-```
+```javascript
 Input: [-2, 0, 1, 2], target=2
 Output: 1
 Explanation: The triplet [-2, 1, 2] has the closest sum to the target.
-
 ```
 Example 2:
-```
+```javascript
 Input: [-3, -1, 1, 2], target=1
 Output: 0
 Explanation: The triplet [-3, 1, 2] has the closest sum to the target.
 
 ```
 Example 3:
-```
+```javascript
 Input: [1, 0, 1, 1], target=100
 Output: 3
 Explanation: The triplet [1, 1, 1] has the closest sum to the target.
@@ -355,7 +340,7 @@ We can follow a similar  approach to iterate through the array, taking one numbe
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function triplet_sum_close_to_target(arr, targetSum) {
   arr.sort((a, b) => a - b);
   let smallest_difference = Infinity;
@@ -406,14 +391,14 @@ Problem Statement
 
 Given an array arr of unsorted numbers and a target sum, count all triplets in it such that arr[i] + arr[j] + arr[k] < target where i, j, and k are three different indices. Write a function to return the count of such triplets.
 Example 1:
-```
+```javascript
 Input: [-1, 0, 2, 3], target=3 
 Output: 2
 Explanation: There are two triplets whose sum is less than the target: [-1, 0, 3], [-1, 0, 2]
 
 ```
 Example 2:
-```
+```javascript
 Input: [-1, 4, 2, 1, 3], target=5 
 Output: 4
 Explanation: There are four triplets whose sum is less than the target: 
@@ -429,7 +414,7 @@ Code
 
 Here is what our algorithm will look like:
 
-```
+```javascript
 function triplet_with_smaller_sum(arr, target) {
   arr.sort((a, b) => a - b);
   let count = 0;
@@ -470,7 +455,7 @@ Similar Problems
 
 Problem:  Write a function to return the list of all such triplets instead of the  count. How will the time complexity change in this case?
 Solution:  Following a similar approach we can create a list containing all the  triplets. Here is the code - only the highlighted lines have changed:
-```
+```javascript
 function triplet_with_smaller_sum(arr, target) {
   arr.sort((a, b) => a - b);
   const triplets = [];
@@ -517,14 +502,14 @@ Problem Statement
 
 Given an array with positive numbers and a target number, find all of its contiguous subarrays whose product is less than the target number.
 Example 1:
-```
+```javascript
 Input: [2, 5, 3, 10], target=30 
 Output: [2], [5], [2, 5], [3], [5, 3], [10]
 Explanation: There are six contiguous subarrays whose product is less than the target.
 
 ```
 Example 2:
-```
+```javascript
 Input: [8, 2, 6, 5], target=50 
 Output: [8], [2], [8, 2], [6], [2, 6], [5], [6, 5] 
 Explanation: There are seven contiguous subarrays whose product is less than the target.
@@ -540,7 +525,7 @@ The implementation will be quite similar to Triplets with Smaller Sum.
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 const Deque = require('./collections/deque'); //http://www.collectionsjs.com
 function find_subarrays(arr, target) {
   let result = [],
@@ -591,7 +576,7 @@ If there are a total of n elements in the array, here is how we can count all th
    …
 - When i = n-1, j can only have only 1 choice.
 Let’s combine all the choices:
-```
+```javascript
     n + (n-1) + (n-2) + ... 3 + 2 + 1
 ```
 Which gives us a total of: n∗(n+1)/2n*(n+1)/2n∗(n+1)/2
@@ -606,13 +591,13 @@ Problem Statement
 Given an array containing  0s, 1s and 2s, sort the array in-place. You should treat numbers of the  array as objects, hence, we can’t count 0s, 1s, and 2s to recreate the  array.
 The flag of the  Netherlands consists of three colors: red, white and blue; and since our  input array also consists of three different numbers that is why it is  called Dutch National Flag problem.
 Example 1:
-```
+```javascript
 Input: [1, 0, 2, 1, 0]
 Output: [0 0 1 1 2]
 
 ```
 Example 2:
-```
+```javascript
 Input: [2, 2, 0, 1, 2, 0]
 Output: [0 0 1 2 2 2 ]
 ```
@@ -626,7 +611,7 @@ We can use a Two Pointers approach while iterating through the array. Let’s sa
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function dutch_flag_sort(arr) {
   // all elements < low are 0, and all elements > high are 2
   // all elements from >= low < i are 1
@@ -667,13 +652,13 @@ Quadruple Sum to Target (medium)
 
 Given an array of unsorted numbers and a target number, find all unique quadruplets in it, whose sum is equal to the target number.
 Example 1:
-```
+```javascript
 Input: [4, 1, 2, -1, 1, -3], target=1
 Output: [-3, -1, 1, 4], [-3, 1, 1, 2]
 Explanation: Both the quadruplets add up to the target.
 ```
 Example 2:
-```
+```javascript
 Input: [2, 0, -1, 1, -2, 2], target=2
 Output: [-2, 0, 2, 2], [-1, 0, 1, 2]
 Explanation: Both the quadruplets add up to the target.
@@ -687,7 +672,7 @@ We can follow a similar  approach to iterate through the array, taking one numbe
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function search_quadruplets(arr, target) {
   arr.sort((a, b) => a - b)
   const quadruplets = [];
@@ -746,21 +731,21 @@ Comparing Strings containing Backspaces (medium)
 
 Given two strings containing backspaces (identified by the character ‘’), check if the two strings are equal.
 Example 1:
-```
+```javascript
 Input: str1="xyz", str2="xzz"
 Output: true
 Explanation: After applying backspaces the strings become "xz" and "xz" respectively.
 ```
 
 Example 2:
-```
+```javascript
 Input: str1="xyz", str2="xyz"
 Output: false
 Explanation: After applying backspaces the strings become "xz" and "xy" respectively.
 ```
 
 Example 3:
-```
+```javascript
 Input: str1="xp", str2="xyz"
 Output: true
 Explanation: After applying backspaces the strings become "x" and "x" respectively.
@@ -768,7 +753,7 @@ In "xyz", the first '' removes the character 'z' and the second '' removes the c
 ```
 
 Example 4:
-```
+```javascript
 Input: str1="xywrrmp", str2="xywrrmup"
 Output: true
 Explanation: After applying backspaces the strings become "xywrrmp" and "xywrrmp" respectively.
@@ -782,7 +767,7 @@ Code
 
 Here is what our algorithm will look like:
 
-```
+```javascript
 function backspace_compare(str1, str2) {
   // use two pointer approach to compare the strings
   let index1 = str1.length - 1,
@@ -837,28 +822,28 @@ Minimum Window Sort (medium)
 
 Given an array, find the length of the smallest subarray in it which when sorted will sort the whole array.
 Example 1:
-```
+```javascript
 Input: [1, 2, 5, 3, 7, 10, 9, 12]
 Output: 5
 Explanation: We need to sort only the subarray [5, 3, 7, 10, 9] to make the whole array sorted
 
 ```
 Example 2:
-```
+```javascript
 Input: [1, 3, 2, 0, -1, 7, 10]
 Output: 5
 Explanation: We need to sort only the subarray [1, 3, 2, 0, -1] to make the whole array sorted
 
 ```
 Example 3:
-```
+```javascript
 Input: [1, 2, 3]
 Output: 0
 Explanation: The array is already sorted
 
 ```
 Example 4:
-```
+```javascript
 Input: [3, 2, 1]
 Output: 3
 Explanation: The whole array needs to be sorted.
@@ -872,13 +857,13 @@ Solution
 
 As we know, once an array  is sorted (in ascending order), the smallest number is at the beginning  and the largest number is at the end of the array. So if we start from  the beginning of the array to find the first element which is out of  sorting order i.e., which is smaller than its previous element, and  similarly from the end of array to find the first element which is  bigger than its previous element, will sorting the subarray between  these two numbers result in the whole array being sorted?
 Let’s try to understand  this with Example-2 mentioned above. In the following array, what are  the first numbers out of sorting order from the beginning and the end of  the array:
-```
+```javascript
     [1, 3, 2, 0, -1, 7, 10]
 ```
 1. Starting from the beginning of the array the first number out of the sorting order is ‘2’ as it is smaller than its previous element which is ‘3’.
 2. Starting from the end of the array the first number out of the sorting order is ‘0’ as it is bigger than its previous element which is ‘-1’
 As you can see, sorting  the numbers between ‘3’ and ‘-1’ will not sort the whole array. To see  this, the following will be our original array after the sorted  subarray:
-```
+```javascript
     [1, -1, 0, 2, 3, 7, 10]
 ```
 
@@ -891,7 +876,7 @@ The problem here is that  the smallest number of our subarray is ‘-1’ which 
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function shortest_window_sort(arr) {
   let low = 0,
     high = arr.length - 1;
@@ -941,7 +926,7 @@ Problems where we deal with sorted arrays (or LinkedLists) and need to find a se
 
 Problem: Given a sorted array A (sorted in ascending order), having N integers, find if there exists any pair of elements (A[i], A[j]) such that their sum is equal to X.
 
-```
+```javascript
 // Naive solution to find if there is a  pair in A[0..N-1] with given sum. 
 function isPairSum(arr, N, x) 
 { 
@@ -974,7 +959,7 @@ Two Pointer Technique:
 
 
 
-```
+```javascript
 function isPairSum(arr, N, x) 
 { 
     var left = 0, right = arr.length - 1; 
@@ -1014,7 +999,7 @@ We are searching the array for 2 items, x and y where x + y = target. This means
 
 If we found a target - x value in HashTable, we found our pair! If not, we will insert x into the HashTable, so that we can search for it later.
 
-```
+```javascript
 deftwoSum(self,nums:List[int],target:int)->List[int]:
     num_map={}    # to store numbers and their indices
     for i,num in enumerate(nums):
@@ -1039,8 +1024,8 @@ Most of these type of problems can be solved in O(N) time complexity and O(1) or
 
 Similar LeetCode Problems
 
-- LeetCode 15 - 3Sum [medium]
-- LeetCode 16 - 3Sum Closest [medium]
+- [LeetCode 15 - 3Sum [medium]](https://leetcode.com/problems/3sum/)
+- [LeetCode 16 - 3Sum Closest [medium]](https://leetcode.com/problems/3sum-closest/)
 - LeetCode 26 - Remove Duplicates from Sorted Array [easy]
 - LeetCode 27 - Remove Element [easy]
 - LeetCode 42 - Trapping Rain Water [hard]
