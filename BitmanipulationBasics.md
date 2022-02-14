@@ -1,36 +1,27 @@
+![Bit Manipulation](https://github.com/AmitVardhan/GrokkingCodingInterview/blob/main/resources/img/bitManipulationHeader.png)
+
+## What is Bit Manipulation?
+Bit manipulation is the act of algorithmically manipulating bits or other pieces of data shorter than a word. Bitwise operators are usually fast compared to arithmetic and other math operations as it has *constant time complexity*. Bit manipulation, in some cases, can reduce the need to loop over a data structure and can give many-fold speed ups. Bit manipulations are processed in *parallel*.
 
 
+### Computer programming tasks that require bit manipulation include:
+1. Low-level device control
+2. Error detection and correction algorithms
+3. Data compression
+4. Encryption algorithms
+5. Optimization
 
 
-What is Bit Manipulation?
-
-Bit manipulation is the act of algorithmically manipulating bits or other pieces of data shorter than a word. Bitwise operators are usually fast compared to arithmetic and other math operations as it has constant time complexity.Bit manipulation, in some cases, can obviate or reduce the need to loop over a data structure and can give many-fold speed ups, as bit manipulations are processed in parallel.
-
-
-Computer programming tasks that require bit manipulation include:
-
-- Low-level device control
-- Error detection and correction algorithms
-- Data compression
-- Encryption algorithms
-- Optimization
-
-
-What is Binary Number System?
-
-Binary code refers to the numeric system that only consists of two numbers, 0 and 1, which are used to represent data and instructions. The numbers 0 and 1 are called bits of binary digits. A bit . A bit as being "set" or "clear" is just another way of saying that the bit has the value 1 (set) or 0 (clear).
+### Binary Number System
+Binary number system refers to the numeric system that only consists of two numbers, 0 and 1. The numbers 0 and 1 are called bits of binary digits and is used to represent data and instruction. Bit with the value 1 is called *set* and 0 is called *clear*.
 
 If a number system has n digits, we say that the base of the number system is n. So the binary number system can also be called the base-2 number system.
 
 
-2. If binary code is something only computers can understand, why should you learn about it?
+### Why should you learn about Binary Number System?
+Binary codes are essential because without them, computers will not understand your instructions in programming. Even if the computer allows you to view text, images, or videos, they cannot understand any of these, and the only way for them to do it is through binary codes. 
 
-Binary codes are essential because without them, computers will not understand your instructions in programming. Even if the computer allows you to view text, images, or videos, they cannot understand any of these, and the only way for them to do it is through binary codes. Even though we do need a few more digits than we did with the decimal system, the binary system is just as good as the decimal system for displaying numbers. Well, in fact, we are not limited to numbers, different types of information can also be represented in binary code, too! To be able to represent text in binary code, we can use simple numbers to represent the different letters in the alphabet. So, A could be 1, B could be 2, and so on. Also, images and graphics displayed on your screen consists of pixels and each pixel in an image has a numerical value that determines the color it should display. This means that, we can represent images and graphics with binary code.
-
-
-
-3. How does the binary number system works?
-
+### How does the binary number system works?
 When learning binary, remember that 0 and 1 stand for off and on. In other words, they act as a switch, a device that allows current to pass through a circuit. With switches, electricity will run on computers. The binary that acts as a switch uses a simple principle called Boolean logic. This is used to control how electricity coordinates with computer operations. Suppose the Boolean logic translates to true, the switch is turned on, whereas when Boolean logic translates to false, the switch is turned off.
 
 To be able to understand the binary number system, we need to take a closer look to the decimal number system. In the decimal system, each digit in a certain number represents the 1’s, the 10’s, the 100’s, and so on, starting from the right hand side.
@@ -44,88 +35,54 @@ In the binary system, instead of using powers of 10, we use powers of 2.
 In the binary system, each digit in a certain number represents 1’s, 2’s, 4’s, 8’s, 16’s, 32’s, 64’s, 128’s, 256’s and so on, starting from the right hand side.
 
 
-4. What about negative numbers?
+### What about negative numbers?
+Computers use a method called *Two’s Complement*  to represent negative numbers. Two's complement method can be effective when performing mathematical operations like adding and subtracting.
+
+In this method, the bit at the far left side of the bit pattern is the most significant bit(MSB) is used to indicate positive or negative numbers. The MSB is called the sign bit. The sign bit is always 0 for positive integers, and 1 for negative integers. Four-bit, positive, two’s complement numbers would be 0000 = 0, 0001 = 1, up to 0111 = 7. The smallest positive number is the smallest binary value.
 
 
-Computers use a method called Two’s Complement  to represent negative numbers. Also this method can be more effective when performing mathematical operations like adding and subtracting.
-
-In this method, the bit at the far left side of the bit pattern is the most significant bit or MSB is used to indicate positive or negative numbers. Positive numbers always start with a 0 and the remaining bits are used to store the actual size of the number. Four-bit, positive, two’s complement numbers would be 0000 = 0, 0001 = 1, up to 0111 = 7. The smallest positive number is the smallest binary value.
-
-The most significant (leftmost) bit is called the sign bit. The sign bit is always 0 for positive integers, and 1 for negative integers.
 
 
 Negative numbers always start with a 1 and the remaining bits are used to store the actual size of the number. The biggest negative number is the largest binary value. (e.g. 1111 is -1)
 
-
-
-
-
-
- 5. Using Two's Complement method to convert positive binary number to its negative value
-
-
- 1.  Find the positive binary value for the negative number you want to represent.
- 2. Add a 0 to the front of the number, to indicate that it is positive.
- 3. Invert or find the complement of each bit in the number.
- 4. Add 1 to this number.
+### Using Two's Complement method to convert positive binary number to its negative value
+1. Find the positive binary value for the negative number you want to represent.
+2. Add a 0 to the front of the number, to indicate that it is positive.
+3. Invert or find the complement of each bit in the number.
+4. Add 1 to this number.
 
 Ben Eater is explaining these steps very clearly in this video.
 
-
-
-6. Bitwise Operators
-
-Working with primitive data types like bytes, booleans , ints, floats, doubles or with data structures is normal for a programmer. Sometimes in Computer Science, you need to go beyond this to a more deeper level where you need to understand the importance of bits. This is especially important if you are working on data compression and encryption algorithms, optimization, data correction and error detection algorithms and so on. Bitwise operators operate on integers and characters but not on data types float or double.
+### Bitwise Operators
+Sometimes in Computer Science, you need to go beyond working on primitive data types (int, float ect.) to a more deeper level where you need to understand the importance of bits. This is especially important if you are working on data compression and encryption algorithms, optimization, data correction and error detection algorithms and so on. Bitwise operators operate on integers and characters but not on data types float or double.
 
 The operands are converted to 32-bit integers and expressed by a series of bits (zeroes and ones).  Numbers with more than 32 bits get their most significant bits discarded. For example, the following integer with more than 32 bits will be converted to a 32 bit integer:
-```
+```javascript
 Before: 11100110111110100000000000000110000000000001
 After:              10100000000000000110000000000001
 ```
 
 Followings are the bitwise operators that we can use in many programming languages.
-Operator
-Description
-Usage
-&
-AND
-Mask particular part of byte
-|
-OR
-
-^
-XOR (Exclusive OR)
-
-~
-One’s Complement
-Turn a bit on/off
-<<
-Left Shift
-Shift the bit to left
->>
-Right Shift
-Shift the bit to right
+|Operator|Description|Usage
+---------|-----------|-----
+&|AND|Mask particular part of byte
+||OR|
+^|XOR (Exclusive OR)|
+~|One’s Complement|Turn a bit on/off
+<<|Left Shift|Shift the bit to left
+>> | Right Shift | Shift bit to right
 
 AND Operator
 
 AND operator (&) returns a 1 in each bit position for which the corresponding bits of both operands are 1s. Bitwise ANDing any number x with 0 yields 0.
-A
-B
-A&B
-0
-0
-0
-0
-1
-0
-1
-0
-0
-1
-1
-1
+A  | B | A&B
+---|---|---
+0 | 0   |0
+0 |1    |0
+1 | 0 | 0
+1 | 1 | 1
 
-```
+```javascript
 const a = 5;        // 00000000000000000000000000000101
 const b = 3;        // 00000000000000000000000000000011
 
@@ -140,7 +97,7 @@ console.log(a & b); // 00000000000000000000000000000001
 Use 0:  Brian Kernighan’s Algorithm to count set bits in an integer
 
 Subtracting 1 from a decimal number flips all the bits after the rightmost set bit(which is 1) including the rightmost set bit. 
-```
+```javascript
 10 in binary is 00001010  
 9 in binary is 00001001  
 8 in binary is 00001000  
@@ -153,7 +110,7 @@ Use 1: Even or odd
 
 For integers, the least significant bit (first bit or rightmost bit) can be used to determine whether the number is even or odd. If the least significant bit is turned on (set to 1), the number is odd; otherwise, the number is even.
 
-```
+```javascript
 function isOddOrEven(int){ 
     if((int & 1) === 0) { 
         console.log(`${int} is Even!`); 
@@ -168,7 +125,7 @@ isOddOrEven(54);    // 54 is Even!
 
 Explanation
 
-```
+```javascript
    0010 0101  (binary of 37) 
    0000 0001  (binary of 1) 
 & ----------- 
@@ -186,7 +143,7 @@ Explanation
 Use 2: Test if the n-th bit is set
 
 This bit trick uses the same logic with the previous one to check if n-th bit is set or not.
-```
+```javascript
 function check_nth_bit(num, n) { 
   if (num & (1 << n)) { 
     console.log(`${num} = ${dec2bin(num)} (binary) and ${n}th bit is set`); 
@@ -201,7 +158,7 @@ function dec2bin(dec) {
 ```
 
 Left shift (<<) finds the correct position of the bit which we want to test
-```
+```javascript
 1         0000 0001
 1 << 1    0000 0010
 1 << 2    0000 0100
@@ -213,7 +170,7 @@ and so on...
 
 If the result after this AND (&) operation is 0, then checked bit is 0, otherwise that bit was set.
 Let’s try with 175 and check if 5th bit is set;
-```
+```javascript
    1010 1111  (binary of 175)  
    0010 0000  (1 << 5)
 & -----------
@@ -245,7 +202,7 @@ A|B
 1
 1
 
-```
+```javascript
 const a = 5;        // 00000000000000000000000000000101
 const b = 3;        // 00000000000000000000000000000011
 
@@ -264,7 +221,7 @@ In bit masking applications, the | operator can be used to ensure that certain b
 For example, say we have an 8-bit integer and we want to ensure that all the even-position bits (second, fourth, sixth, eighth) are turned on (set to 1). The | operator can be used to achieve this as follows:
 - First, create a bit mask whose effect will be to turn on every even-positioned bit of an 8-bit integer. That bit mask will be 0b10101010. Note that the even-positioned bits of the bit mask are set to 1, while every other bit is set to 0.
 - Next, perform an | operation using the 8-bit integer and the created bit mask:
-```
+```javascript
 const mask = 0b10101010;
 
 // 208 => 11010000
@@ -315,7 +272,7 @@ A^B
 1
 0
 
-```
+```javascript
 const a = 5;        // 00000000000000000000000000000101
 const b = 3;        // 00000000000000000000000000000011
 
@@ -329,13 +286,13 @@ Single Number (easy)
 LeetCode 136 - Single Number [easy]
 In a non-empty array of integers, every number appears twice except for one, find that single number.
 Example 1:
-```
+```javascript
 Input: 1, 4, 2, 1, 3, 2, 3
 Output: 4
 ```
 
 Example 2:
-```
+```javascript
 Input: 7, 9, 7
 Output: 9
 ```
@@ -363,7 +320,7 @@ So we can XOR all the  numbers in the input; duplicate numbers will zero out eac
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function find_single_number(arr) {
   let num = 0;
   for (i = 0; i < arr.length; i++){
@@ -381,7 +338,7 @@ Two Single Numbers (medium)
 LeetCode 260 - Single Number III [medium]
 In a non-empty array of  numbers, every number appears exactly twice except two numbers that  appear only once. Find the two numbers that appear only once.
 Example 1:
-```
+```javascript
 Input: [1, 4, 2, 1, 3, 5, 6, 2, 3, 5]
 Output: [4, 6]
 ```
@@ -410,7 +367,7 @@ Here are the steps of our algorithm:
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function find_single_numbers(nums) {
   // get the XOR of the all the numbers
   let n1xn2 = 0;
@@ -450,13 +407,13 @@ Every non-negative integer  N has a binary representation, for example, 8 can be
 The complement of a binary  representation is the number in binary that we get when we change every  1 to a 0 and every 0 to a 1.  For example, the binary complement of  “1010” is “0101”.
 For a given positive number N in base-10, return the complement of its binary representation as a base-10 integer.
 Example 1:
-```
+```javascript
 Input: 8
 Output: 7
 Explanation: 8 is 1000 in binary, its complement is 0111 in binary, which is 7 in base-10.
 ```
 Example 2:
-```
+```javascript
 Input: 10
 Output: 5
 Explanation: 10 is 1010 in binary, its complement is 0101 in binary, which is 5 in base-10.
@@ -471,19 +428,19 @@ Recall the following properties of XOR:
 3. It returns the same number if we XOR with 0.
 From the above-mentioned  first property, we can conclude that XOR of a number with its complement  will result in a number that has all of its bits set to 1. For example,  the binary complement of “101” is “010”; and if we take XOR of these  two numbers, we will get a number with all bits set to 1, i.e., 101 ^ 010 = 111
 We can write this fact in the following equation:
-```
+```javascript
 number ^ complement = all_bits_set
 ```
 Let’s add ‘number’ on both sides:
-```
+```javascript
 number ^ number ^ complement = number ^ all_bits_set
 ```
 From the above-mentioned second property:
-```
+```javascript
 0 ^ complement = number ^ all_bits_set
 ```
 From the above-mentioned third property:
-```
+```javascript
 complement = number ^ all_bits_set
 ```
 
@@ -495,7 +452,7 @@ One way to calculate all_bits_set will be to first count  the bits required to s
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function calculate_bitwise_complement(num) {
   // count number of total bits in 'num'
   let bit_count = 0;
@@ -532,7 +489,7 @@ Given a binary matrix representing an image, we want to flip the image horizonta
 To flip an image  horizontally means that each row of the image is reversed.  For example,  flipping [0, 1, 1] horizontally results in [1, 1, 0].
 To invert an image means  that each 0 is replaced by 1, and each 1 is replaced by 0. For example,  inverting [1, 1, 0] results in [0, 0, 1].
 Example 1:
-```
+```javascript
 Input: [
   [1,0,1],
   [1,1,1],
@@ -547,7 +504,7 @@ Output: [
 ```
 Explanation: First reverse each row: [[1,0,1],[1,1,1],[1,1,0]]. Then, invert the image: [[0,1,0],[0,0,0],[0,0,1]]
 Example 2:
-```
+```javascript
 Input: [
   [1,1,0,0],
   [1,0,0,1],
@@ -572,7 +529,7 @@ Solution
 Code 
 
 Here is what our algorithm will look like:
-```
+```javascript
 function flip_and_invert_image(matrix) {
   const C = matrix.length;
   for (var row = 0; row < C; ++row) {
@@ -603,7 +560,7 @@ The space complexity of this solution is O(1).
 Problem: Given an array of n−1 integers in the range from 1 to n, find the one number that is missing from the array.
 
 Example:
-```
+```javascript
 Input: 1, 5, 2, 6, 4
 Answer: 3
 ```
@@ -613,7 +570,7 @@ A straight forward approach to solve this problem can be:
 2. Subtract all the numbers in the input array from s1; this will give us the missing number.
 
 This is what the algorithm will look like:
-```
+```javascript
 function find_missing_number(arr) {
   const n = arr.length + 1;
   // find sum of all numbers from 1 to n.
@@ -647,7 +604,7 @@ Following are the set of steps to find the missing  number using XOR:
 2. XOR all the numbers in the input array, let’s call it x2.
 3. The missing number can be found by x1 XOR x2.
 Here is what the algorithm will look like:
-```
+```javascript
 function find_missing_number(arr) {
   const n = arr.length + 1;
   // x1 represents XOR of all values from 1 to n
@@ -696,7 +653,7 @@ In bit masking applications, the ^ operator is commonly used for toggling or fli
 For example, say we have an 8-bit integer and we want to ensure that every bit is toggled except the least significant (first) and most significant (eighth) bits. The ^ operator can be used to achieve this as follows:
 - First, create a bit mask whose effect will be to toggle every bit of an 8-bit integer except the least significant and most significant bits. That bit mask will be 0b01111110. Note that the bits to be toggled are set to 1, while every other bit is set to 0.
 - Next, perform an ^ operation using the 8-bit integer and the created bit mask:
-```
+```javascript
 const mask = 0b01111110;
 
 // 208 => 11010000
@@ -729,7 +686,7 @@ A
 0
 0
 
-```
+```javascript
 const a = 5;     // 00000000000000000000000000000101
 const b = -3;    // 11111111111111111111111111111101
 
@@ -747,7 +704,7 @@ Left Shift Operator
 
 Left shift operator (<<) shifts the first operand the specified number of bits to the left. Excess bits shifted off to the left are discarded. Zero bits are shifted in from the right.
 Bitwise shifting any number x to the left by y bits yields x * 2 ** y. So e.g.: 9 << 3 translates to: 9 * (2 ** 3) = 9 * (8) = 72
-```
+```javascript
 const a = 5;         // 00000000000000000000000000000101
 const b = 2;         // 00000000000000000000000000000010
 
@@ -762,13 +719,13 @@ One very useful application of the left shift (<<) operator is converting colors
 
 The color value for each component of an RGB color is between 0 - 255. Simply put, each color value can be represented perfectly by 8 bits.
 
-```
+```javascript
   0 => 0b00000000 (binary) => 0x00 (hexadecimal)
 255 => 0b11111111 (binary) => 0xff (hexadecimal)
 ```
 Thus, the color itself can be perfectly represented by 24 bits (8 bits each for red, green, and blue components). The first 8 bits starting from the right will represent the blue component, the next 8 bits will represent the green component, and the 8 bits after that will represent the red component.
 
-```
+```javascript
 (binary) => 11111111 00100011 00010100
 
    (red) => 11111111 => ff => 255
@@ -779,7 +736,7 @@ Thus, the color itself can be perfectly represented by 24 bits (8 bits each for 
 ```
 Now that we understand how to represent the color as a 24-bit sequence, let’s see how we can compose the 24 bits of the color from the values of the color’s individual components. Let’s say we have a color represented by rgb(255, 35, 20). Here is how we can compose the bits:
 
-```
+```javascript
   (red) => 255 => 00000000 00000000 00000000 11111111
 (green) =>  35 => 00000000 00000000 00000000 00100011
  (blue) =>  20 => 00000000 00000000 00000000 00010100
@@ -803,7 +760,7 @@ Now that we understand how to represent the color as a 24-bit sequence, let’s 
 ```
 
 Now that the procedure is pretty clear, here is a simple function that takes the RGB values of a color as an input array and returns the corresponding hexadecimal representation of the color based on the above procedure:
-```
+```javascript
 function rgbToHex ([red = 0, green = 0, blue = 0] = []) {
   return `#${(red << 16 | green << 8 | blue).toString(16)}`;
 }
@@ -815,7 +772,7 @@ function rgbToHex ([red = 0, green = 0, blue = 0] = []) {
 Right Shift Operator
 
 Right shift operator (>>) shifts the first operand the specified number of bits to the right. Excess bits shifted off to the right are discarded. Copies of the leftmost bit are shifted in from the left. Since the new leftmost bit has the same value as the previous leftmost bit, the sign bit (the leftmost bit) does not change. Hence the name "sign-propagating".
-```
+```javascript
 const a = 5;          //  00000000000000000000000000000101
 const b = 2;          //  00000000000000000000000000000010
 const c = -5;         // -00000000000000000000000000000101
@@ -835,7 +792,7 @@ One very good application of the right shift (>>) operator is extracting RGB col
 In the previous section, we saw the procedure for composing the bits of a color from the bits of its individual components (red, green, and blue). If we work through that procedure backwards, we will be able to extract the values of the individual components of the color. Let’s give that a shot.
 
 Let’s say we have a color represented by the hexadecimal notation #ff2314. Here is the signed 32-bit representation of the color:
-```
+```javascript
 (color) => ff2314 (hexadecimal) => 11111111 00100011 00010100 (binary)
 
 // 32-bit representation of color
@@ -843,7 +800,7 @@ Let’s say we have a color represented by the hexadecimal notation #ff2314. Her
 ```
 
 To get the individual components, we will right-shift the color bits by multiples of 8 as necessary until we get the target component bits as the first 8 bits from the right. Since the most significant bit of the 32 bits for the color is 0, we can safely use the sign-propagating right shift (>>) operator for this.
-```
+```javascript
 color => 00000000 11111111 00100011 00010100
 
 // Right shift the color bits by multiples of 8
@@ -864,14 +821,14 @@ green => color >> 8
 Now that we have the target component bits as the first 8 bits from the right, we need a way to mask out every other bits except the first 8 bits. That brings us back to the AND (&) operator. Remember that the & operator can be used to ensure that certain bits are turned off.
 
 Let’s start by creating the required bit mask. That would look like this:
-```
+```javascript
 mask => 00000000 00000000 00000000 11111111
      => 0b11111111 (binary)
      => 0xff (hexadecimal)
 ```
 
 With the bit mask ready, we can carry out an AND (&) operation on each of the results from the previous right-shifting operations using the bit mask to extract the target component bits.
-```
+```javascript
   red => color >> 16 & 0xff
       =>   00000000 00000000 00000000 11111111
       => & 00000000 00000000 00000000 11111111
@@ -892,7 +849,7 @@ green => color >> 8 & 0xff
 ```
 
 Based on the above procedure, here is a simple function that takes a hex color string (with six hexadecimal digits) as input and returns the corresponding array of RGB color component values.
-```
+```javascript
 function hexToRgb (hex) {
   hex = hex.replace(/^#?([0-9a-f]{6})$/i, '$1');
   hex = Number(`0x${hex}`);
