@@ -2,15 +2,11 @@
 
 ### Usage
 1. Sorted arrays/LinkedLists where we need to find a set of elements that fulfill certain constraints. The set of elements could be a pair, a triplet or even a  subarray. 
-
+2. There is a target value to match or duplicates to be removed.
 
 
 ### Problem: Pair with Target Sum
-
-[Pair with Target Sum (easy)](https://leetcode.com/problems/two-sum/)
-
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
-
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
 Example 1:
@@ -26,16 +22,42 @@ Output: [0, 2]
 Explanation: The numbers at index 0 and 2 add up to 11: 2+9=11
 ```
 
+Brute Force:
+Since the given array is sorted, a brute-force solution could be to iterate through the array,  taking one number at a time and searching for the second number through Binary Search. The time complexity of this algorithm will be O(N ∗ logN). Can we do better than this?
 
-Solution
-Since the given array is  sorted, a brute-force solution could be to iterate through the array,  taking one number at a time and searching for the second number through Binary Search. The time complexity of this algorithm will be O(N ∗ logN). Can we do better than this?
+```javascript
+function isPairSum(arr, targetSum) 
+{ 
+    for(var i = 0; i < arr.length; i++) 
+    { 
+        for(var j = 0; j <arr.length; j++) 
+        { 
+            if(arr[i] + arr[j] == targetSum) 
+            { 
+                return [i, j]; 
+            } 
+            if(arr[i] + arr[j] > targetSum) 
+                break; 
+        } 
+    } 
+    return [-1,-1]; 
+} 
 
-We can follow the Two Pointers  approach. We will start with one pointer pointing to the beginning of  the array and another pointing at the end. At every step, we will see if  the numbers pointed by the two pointers add up to the target sum. If  they do, we have found our pair; otherwise, we will do one of two  things:
+var arr = [3,5,9,2,8,10,11], Sum = 17;
+console.log(isPairSum(arr, Sum));
+```
 
-1.  If the sum of the two numbers pointed by the two pointers is greater than the target sum, this means that we need a pair with a smaller sum. So, to try more pairs, we can decrement the end-pointer.
-2.  If the sum of the two numbers pointed by the two pointers is smaller than the target sum, this means that we need a pair with a larger sum. So, to try more pairs, we can increment the start-pointer.
-Here is the visual representation of this algorithm for Example-1:
+Time Complexity: O(n^2) 
 
+Optimized Solution  
+We can follow the Two Pointers approach. We will start with one pointer pointing to the beginning of the array and another pointing at the end. At every step, we will see if  the numbers pointed by the two pointers add up to the target sum. If they do, we have found our pair; otherwise, we will do one of two  things:
+
+1. If the sum of the two numbers pointed by the two pointers is greater than the target sum, this means that we need a pair with a smaller sum. So, to try more pairs, we can decrement the end-pointer.
+2. If the sum of the two numbers pointed by the two pointers is smaller than the target sum, this means that we need a pair with a larger sum. So, to try more pairs, we can increment the start-pointer.
+
+Here is the visual representation of this algorithm:
+
+# Todo add image
 
 ```javascript
 function pair_with_target_sum(arr, targetSum) {
@@ -59,8 +81,8 @@ console.log(pair_with_target_sum([2, 5, 9, 11], 11));
 ```
 
 
-Time Complexity : O(N)
-Space Complexity:  O(1).
+Time Complexity : O(N)  
+Space Complexity:  O(1)
 
 
 
@@ -93,9 +115,7 @@ The space complexity will also be O(N), as, in the worst case, we will be pushin
 
 
 
-Remove Duplicates (easy)
-Problem Statement 
-
+### Problem: Remove Duplicates (easy)
 Given an array of sorted numbers, remove all duplicates from it. You should not use any extra space; after removing the duplicates in-place return the length of the subarray that has no duplicate in it.
 Example 1:
 ```javascript
@@ -133,25 +153,25 @@ console.log(remove_duplicates([2, 3, 3, 3, 6, 9, 9]));
 console.log(remove_duplicates([2, 2, 2, 11]));
 ```
 
-Time Complexity : O(1)
+Time Complexity : O(1)  
 Space Complexity: O(1)
 
 
-Problem 1:  Given an unsorted array of numbers and a target ‘key’, remove all  instances of ‘key’ in-place and return the new length of the array.
+### Problem:  Given an unsorted array of numbers and a target ‘key’, remove all  instances of ‘key’ in-place and return the new length of the array.
 Example 1:
-```
+```javascript
 Input: [3, 2, 3, 6, 3, 10, 9, 3], Key=3
 Output: 4
 Explanation: The first four elements after removing every 'Key' will be [2, 6, 10, 9].
 ```
 Example 2:
-```
+```javascript
 Input: [2, 11, 2, 2, 1], Key=2
 Output: 2
 Explanation: The first two elements after removing every 'Key' will be [11, 1].
 ```
 Solution:  This problem is quite similar to our parent problem. We can follow a  two-pointer approach and shift numbers left upon encountering the ‘key’.  Here is what the code will look like:
-```
+```javascript
 function remove_element(arr, key) {
   let nextElement = 0; // index of the next element which is not 'key'
   for (i = 0; i < arr.length; i++) {
@@ -166,8 +186,8 @@ console.log(`Array new length: ${remove_element([3, 2, 3, 6, 3, 10, 9, 3], 3)}`)
 console.log(`Array new length: ${remove_element([2, 11, 2, 2, 1], 2)}`);
 ```
 
-Time Complexity: O(N)
-Space Complexity: O(1).
+Time Complexity: O(N)  
+Space Complexity: O(1)
 
 
 Squaring a Sorted Array (easy)
@@ -177,11 +197,11 @@ Problem Statement
 
 Given a sorted array, create a new array containing squares of all the numbers of the input array in the sorted order.
 Example 1:
-```
+```javascript
 Input: [-2, -1, 0, 2, 3]
 Output: [0, 1, 4, 4, 9]
 
-```
+```javascript
 Example 2:
 ```
 Input: [-3, -1, 0, 1, 2]
@@ -224,12 +244,10 @@ console.log(`Squares: ${make_squares([-2, -1, 0, 2, 3])}`);
 console.log(`Squares: ${make_squares([-3, -1, 0, 1, 2])}`);
 ```
 
-Time complexity 
-
+Time complexity: O(n)  
 The above algorithm’s time complexity will be O(N) as we are iterating the input array only once.
 
-Space complexity 
-
+Space complexity: O(n)  
 The above algorithm’s space complexity will also be O(N); this space will be used for the output array.
 
 
@@ -270,6 +288,7 @@ function search_triplets(arr) {
   }
   return triplets;
 }
+
 function search_pair(arr, target_sum, left, triplets) {
   let right = arr.length - 1;
   while (left < right) {
@@ -296,19 +315,14 @@ console.log(search_triplets([-5, 2, -1, -2, 3]));
 ```
 
 
-Time complexity 
+Time complexity: O(n^2)  
+Sorting the array will take O(N∗logN)O(N * logN). The searchPair() function will take O(N). As we are calling searchPair() for every number in the input array, this means that overall searchTriplets() will take O(N∗logN+N^2), which is asymptotically equivalent to O(N^2).
 
-Sorting the array will take O(N∗logN)O(N * logN). The searchPair() function will take O(N). As we are calling searchPair() for every number in the input array, this means that overall searchTriplets() will take O(N∗logN+N2), which is asymptotically equivalent to O(N2).
-
-Space complexity 
-
+Space complexity: O(n)  
 Ignoring the space required for the output array, the space complexity of the above algorithm will be O(N) which is required for sorting.
 
 
-Triplet Sum Close to Target (medium)
-
-
-Problem Statement 
+### Problem: Triplet Sum Close to Target (medium)
 
 Given an array of unsorted numbers and a target number, find a triplet in the array whose sum is as close to the target number as possible, return the sum of the triplet. If there are more than one such triplet, return the sum of the triplet with the smallest sum.
 Example 1:
@@ -338,8 +352,6 @@ This problem follows the Two Pointers pattern and is quite similar to Triplet Su
 We can follow a similar  approach to iterate through the array, taking one number at a time. At  every step, we will save the difference between the triplet and the  target number, so that in the end, we can return the triplet with the  closest sum.
 
 Code 
-
-Here is what our algorithm will look like:
 ```javascript
 function triplet_sum_close_to_target(arr, targetSum) {
   arr.sort((a, b) => a - b);
@@ -375,18 +387,14 @@ console.log(triplet_sum_close_to_target([1, 0, 1, 1], 100));
 ```
 
 
-Time complexity 
-
+Time complexity: O(n^2)  
 Sorting the array will take O(N∗logN). Overall, the function will take O(N∗logN+N2), which is asymptotically equivalent to O(N2).
 
-Space complexity 
-
+Space complexity: O(n)  
 The above algorithm’s space complexity will be O(N), which is required for sorting.
 
 
-Triplets with Smaller Sum (medium)
-
-
+### Triplets with Smaller Sum (medium)
 Problem Statement 
 
 Given an array arr of unsorted numbers and a target sum, count all triplets in it such that arr[i] + arr[j] + arr[k] < target where i, j, and k are three different indices. Write a function to return the count of such triplets.
@@ -409,10 +417,6 @@ Solution
 
 This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero.  The only difference is that, in this problem, we need to find the  triplets whose sum is less than the given target. To meet the condition i != j != k we need to make sure that each number is not used more than once.
 Following a similar  approach, first, we can sort the array and then iterate through it,  taking one number at a time.  Let’s say during our iteration we are at  number ‘X’, so we need to find ‘Y’ and ‘Z’ such that X+Y+Z<target. At this stage, our problem translates into finding a pair whose sum is less than "target−X" (as from the above equation Y+Z==target−X). We can use a similar approach as discussed in Triplet Sum to Zero.
-
-Code 
-
-Here is what our algorithm will look like:
 
 ```javascript
 function triplet_with_smaller_sum(arr, target) {
@@ -443,18 +447,17 @@ console.log(triplet_with_smaller_sum([-1, 0, 2, 3], 3));
 console.log(triplet_with_smaller_sum([-1, 4, 2, 1, 3], 5));
 ```
 
-Time complexity 
+Time complexity: O(n^2)
 
 Sorting the array will take O(N∗logN). The searchPair() will take O(N). So, overall searchTriplets() will take O(N∗logN+N2), which is asymptotically equivalent to O(N2).
 
-Space complexity 
-
+Space complexity: O(n)
 The space complexity of the above algorithm will be O(N) which is required for sorting if we are not using an in-place sorting algorithm.
 
-Similar Problems 
 
-Problem:  Write a function to return the list of all such triplets instead of the  count. How will the time complexity change in this case?
-Solution:  Following a similar approach we can create a list containing all the  triplets. Here is the code - only the highlighted lines have changed:
+
+### Problem:  Write a function to return the list of all such triplets instead of the  count. How will the time complexity change in this case?
+
 ```javascript
 function triplet_with_smaller_sum(arr, target) {
   arr.sort((a, b) => a - b);
@@ -485,20 +488,15 @@ console.log(triplet_with_smaller_sum([-1, 4, 2, 1, 3], 5));
 ```
 Another  simpler approach could be to check every triplet of the array with  three nested loops and create a list of triplets that meet the required  condition.
 
-Time complexity 
-
+Time complexity: O(n^3)
 Sorting the array will take O(N∗logN). The searchPair(), in this case, will take O(N2); the main while loop will run in O(N) but the nested for loop can also take  O(N) - this will happen when the target sum is bigger than every triplet in the array.
 So, overall searchTriplets() will take O(N∗logN+N3), which is asymptotically equivalent to O(N3).
 
-Space complexity 
-
+Space complexity: O(n) 
 Ignoring the space required for the output array, the space complexity of the above algorithm will be O(N) which is required for sorting.
 
 
-Subarrays with Product Less than a Target (medium)
-
-
-Problem Statement 
+### Problem: Subarrays with Product Less than a Target (medium)
 
 Given an array with positive numbers and a target number, find all of its contiguous subarrays whose product is less than the target number.
 Example 1:
@@ -522,9 +520,7 @@ This problem follows the Sliding Window and the Two Pointers pattern and shares 
 2. Instead of finding triplets with sum less than a target, we need to find all subarrays having a product less than the target.
 The implementation will be quite similar to Triplets with Smaller Sum.
 
-Code 
 
-Here is what our algorithm will look like:
 ```javascript
 const Deque = require('./collections/deque'); //http://www.collectionsjs.com
 function find_subarrays(arr, target) {
@@ -552,13 +548,12 @@ console.log(find_subarrays([2, 5, 3, 10], 30));
 console.log(find_subarrays([8, 2, 6, 5], 50));
 ```
 
-Time complexity 
+Time complexity: O(N^3)  
+The main for-loop managing the sliding window takes O(N) but creating subarrays can take up to O(N2) in the worst case. Therefore overall, our algorithm will take O(N^3).
 
-The main for-loop managing the sliding window takes O(N) but creating subarrays can take up to O(N2) in the worst case. Therefore overall, our algorithm will take O(N3)O(N^3)O(N3).
+Space complexity: O(N)   
+Ignoring the space required for the output list, the algorithm runs in O(N) space which is used for the temp list.  
 
-Space complexity 
-
-Ignoring the space required for the output list, the algorithm runs in O(N) space which is used for the temp list.
 Can you try estimating how much space will be required for the output list?
 
 Hint: 
@@ -579,14 +574,11 @@ Let’s combine all the choices:
 ```javascript
     n + (n-1) + (n-2) + ... 3 + 2 + 1
 ```
-Which gives us a total of: n∗(n+1)/2n*(n+1)/2n∗(n+1)/2
-So, at most, we need space for O(n2)O(n^2)O(n2) output lists. At worst, each subarray can take O(n)O(n)O(n) space, so overall, our algorithm’s space complexity will be O(n3)O(n^3)O(n3).
+Which gives us a total of: n∗(n+1)/2
+So, at most, we need space for O(n^2) output lists. At worst, each subarray can take O(n)O(n)O(n) space, so overall, our algorithm’s space complexity will be O(n^3).
 
 
-Dutch National Flag Problem (medium)
-
-
-Problem Statement 
+Problem: Dutch National Flag Problem (medium)
 
 Given an array containing  0s, 1s and 2s, sort the array in-place. You should treat numbers of the  array as objects, hence, we can’t count 0s, 1s, and 2s to recreate the  array.
 The flag of the  Netherlands consists of three colors: red, white and blue; and since our  input array also consists of three different numbers that is why it is  called Dutch National Flag problem.
@@ -641,14 +633,13 @@ dutch_flag_sort(arr);
 console.log(arr);
 ```
 
-Time complexity : O(N) as we are iterating the input array only once.
-
-
+Time complexity : O(N) 
+as we are iterating the input array only once.
 Space complexity :  O(1)
 
 
 
-Quadruple Sum to Target (medium) 
+Problem: Quadruple Sum to Target (medium) 
 
 Given an array of unsorted numbers and a target number, find all unique quadruplets in it, whose sum is equal to the target number.
 Example 1:
@@ -665,7 +656,6 @@ Explanation: Both the quadruplets add up to the target.
 ```
 
 Solution 
-
 This problem follows the Two Pointers pattern and shares similarities with Triplet Sum to Zero.
 We can follow a similar  approach to iterate through the array, taking one number at a time. At  every step during the iteration, we will search for the quadruplets  similar to Triplet Sum to Zero whose sum is equal to the given target.
 
@@ -718,18 +708,16 @@ console.log(search_quadruplets([2, 0, -1, 1, -2, 2], 2));
 ```
 
 
-Time complexity 
+Time complexity: O(n^3)
+Sorting the array will take O(N∗logN). Overall searchQuadruplets() will take O(N∗logN+N3), which is asymptotically equivalent to O(N3).
 
-Sorting the array will take O(N∗logN)O(N*logN)O(N∗logN). Overall searchQuadruplets() will take O(N∗logN+N3), which is asymptotically equivalent to O(N3).
-
-Space complexity 
-
+Space complexity: O(n) 
 The space complexity of the above algorithm will be O(N) which is required for sorting.
 
 
-Comparing Strings containing Backspaces (medium) 
-
+### Problem: Comparing Strings containing Backspaces (medium) 
 Given two strings containing backspaces (identified by the character ‘’), check if the two strings are equal.
+
 Example 1:
 ```javascript
 Input: str1="xyz", str2="xzz"
@@ -762,10 +750,6 @@ Explanation: After applying backspaces the strings become "xywrrmp" and "xywrrmp
 Solution 
 
 To compare the given  strings, first, we need to apply the backspaces. An efficient way to do  this would be from the end of both the strings. We can have separate  pointers, pointing to the last element of the given strings. We can  start comparing the characters pointed out by both the pointers to see  if the strings are equal. If, at any stage, the character pointed out by  any of the pointers is a backspace (’’), we will skip and apply the  backspace until we have a valid character available for comparison.
-
-Code 
-
-Here is what our algorithm will look like:
 
 ```javascript
 function backspace_compare(str1, str2) {
@@ -809,16 +793,14 @@ console.log(backspace_compare('xp', 'xyz'));
 console.log(backspace_compare('xywrrmp', 'xywrrmup'));
 ```
 
-Time complexity 
-
+Time complexity: O(m+n) 
 The time complexity of the above algorithm will be O(M+N) where ‘M’ and ‘N’ are the lengths of the two input strings respectively.
 
-Space complexity 
-
+Space complexity: O(1)
 The algorithm runs in constant space O(1).
 
 
-Minimum Window Sort (medium) 
+### Problem: Minimum Window Sort (medium) 
 
 Given an array, find the length of the smallest subarray in it which when sorted will sort the whole array.
 Example 1:
@@ -873,9 +855,6 @@ The problem here is that  the smallest number of our subarray is ‘-1’ which 
 3. Extend the subarray from beginning to include any number which is bigger than the minimum of the subarray.
 4. Similarly, extend the subarray from the end to include any number which is smaller than the maximum of the subarray.
 
-Code 
-
-Here is what our algorithm will look like:
 ```javascript
 function shortest_window_sort(arr) {
   let low = 0,
@@ -914,9 +893,7 @@ console.log(shortest_window_sort([1, 2, 3]));
 console.log(shortest_window_sort([3, 2, 1]));
 ```
 
-Time complexity : O(N)
-
-
+Time complexity : O(N)  
 Space complexity :O(1)
 
 
@@ -1014,26 +991,20 @@ Time Complexity: O(N) where N is the number of elements in the input array (nums
 Space Complexity: O(N), in the worst case, we will be pushing N numbers to HashMap.
 
 
-How to identify?
 
-So we want to be able to identify the problems that Two Pointers pattern works.
-- The problem involve sorted arrays (or Linked Lists), a set of pair elements, or a triplet or even a subarray.
-- There is a target value to match or duplicates to be removed.
-Most of these type of problems can be solved in O(N) time complexity and O(1) or O(N) space complexity.
+### LeetCode Problems
+- [Remove Duplicates from Sorted Array [easy]](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+- [Remove Element [easy]](https://leetcode.com/problems/remove-element/)
+- [Valid Palindrome [easy]](https://leetcode.com/problems/valid-palindrome/)
+- [Intersection of Two Arrays [easy]](https://leetcode.com/problems/intersection-of-two-arrays/)
+- [Intersection of Two Arrays II [easy]](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
+- [Valid Palindrome II [easy]](https://leetcode.com/problems/valid-palindrome-ii/)
+- [Squares of a Sorted Array [easy]](https://leetcode.com/problems/squares-of-a-sorted-array/)
+- [3Sum [medium]](https://leetcode.com/problems/3sum/)
+- [3Sum Closest [medium]](https://leetcode.com/problems/3sum-closest/)
+- [Sort Colors [medium]](https://leetcode.com/problems/sort-colors/)
+- [Subarray Product Less Than K [medium]](https://leetcode.com/problems/subarray-product-less-than-k/)
+- [3Sum Smaller [medium]](https://leetcode.com/problems/3sum-smaller) [premium]
+- [Trapping Rain Water [hard]](https://leetcode.com/problems/trapping-rain-water/)
 
 
-Similar LeetCode Problems
-
-- [LeetCode 15 - 3Sum [medium]](https://leetcode.com/problems/3sum/)
-- [LeetCode 16 - 3Sum Closest [medium]](https://leetcode.com/problems/3sum-closest/)
-- LeetCode 26 - Remove Duplicates from Sorted Array [easy]
-- LeetCode 27 - Remove Element [easy]
-- LeetCode 42 - Trapping Rain Water [hard]
-- LeetCode 75 - Sort Colors [medium]
-- LeetCode 125 - Valid Palindrome [easy]
-- LeetCode 259 - 3Sum Smaller [medium] [premium]
-- LeetCode 349 - Intersection of Two Arrays [easy]
-- LeetCode 350 - Intersection of Two Arrays II [easy]
-- LeetCode 680 - Valid Palindrome II [easy]
-- LeetCode 713 - Subarray Product Less Than K [medium]
-- LeetCode 977 - Squares of a Sorted Array [easy]
